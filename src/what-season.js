@@ -13,26 +13,26 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getSeason(date) {
   let dateChek = new Date(date),
-      month = dateChek.getMonth(),
-      season;
-    if(!date) return 'Unable to determine the time of year!'
-    if(date.getDate != Date.prototype.getDate) throw new Error('Invalid date!')
-    // if (date == 'new Date()') {dateChek = new Date()}
-    if ((month == 11)||(month == 0)||(month == 1)) {
-      season = 'winter';
-    }
-    else if ((month == 2)||(month == 3)||(month == 4)) {
-      season = 'spring';
-    }
-    else if ((month == 5)||(month == 6)||(month == 7)) {
-      season = 'summer';
-    }
-    else if ((month == 8)||(month == 9)||(month == 10)) {
-      season = 'autumn';
-    } else {
-      season = 'Invalid date!';
-    }
-  return(season);
+    month = dateChek.getMonth(),
+    season;
+  if (!date) {
+    return 'Unable to determine the time of year!';
+  }
+  if (!(date instanceof Date) || date.hasOwnProperty("toString")) {
+    throw Error('Invalid date!');
+  }
+  if ((month == 11) || (month == 0) || (month == 1)) {
+    season = 'winter';
+  } else if ((month == 2) || (month == 3) || (month == 4)) {
+    season = 'spring';
+  } else if ((month == 5) || (month == 6) || (month == 7)) {
+    season = 'summer';
+  } else if ((month == 8) || (month == 9) || (month == 10)) {
+    season = 'autumn';
+  } else {
+    season = 'Invalid date!';
+  }
+  return (season);
   // console.log(season);
 }
 getSeason();
